@@ -33,10 +33,19 @@ class Reviews extends OBFController
   public function comment_delete()
   {
     $this->user->require_permission('reviews_module');
+    
     $id = trim($this->data('id'));
+    
     $this->db->where('id',$id);
-    $this->db->delete('module_reviews_comments');
-    return [true, 'Comment deleted.'];
+    $row = $this->db->get_one('module_reviews_comments');
+    
+    if($row)
+    {
+      $this->db->where('id',$id);
+      $this->db->delete('module_reviews_comments');
+      return [true, 'Comment deleted.'];
+    }
+    return [false, 'Comment not found.'];
   }
   
   public function comment_get()
@@ -80,16 +89,7 @@ class Reviews extends OBFController
     ]);
     
     // update average rating
-    $this->db->what('AVG(rating)','average',false);
-    $this->db->where('media_id',$media_id);
-    $row = $this->db->get_one('module_reviews_ratings');
-    $average = round($row['average']);
-    
-    $this->db->where('media_id',$media_id);
-    $this->db->update('media_metadata',[
-      'reviews_module_rating' => $average
-    ]);
-
+    $this->rating_average($media_id);
     
     return [true, 'Rating added.'];
   }
@@ -97,10 +97,21 @@ class Reviews extends OBFController
   public function rating_delete()
   {
     $this->user->require_permission('reviews_module');
+    
     $id = trim($this->data('id'));
+    
     $this->db->where('id',$id);
-    $this->db->delete('module_reviews_ratings');
-    return [true, 'Rating deleted.'];
+    $row = $this->db->get_one('module_reviews_ratings');
+    
+    if($row)
+    {
+      $this->db->where('id',$id);
+      $this->db->delete('module_reviews_ratings');
+      $this->rating_average($row['media_id']);    
+      return [true, 'Rating deleted.'];
+    }
+    
+    return [false, 'Rating not found.'];
   }
   
   public function rating_get()
@@ -109,5 +120,23 @@ class Reviews extends OBFController
     $this->db->where('media_id',$media_id);
     $ratings = $this->db->get('module_reviews_ratings');
     return [true, 'Ratings', $ratings];
+  }
+  
+  private function rating_average($media_id)
+  {
+    $this->db->where('media_id',$media_id);
+    if($this->db->get_one('module_reviews_ratings'))
+    {
+      $this->db->what('AVG(rating)','average',false);
+      $this->db->where('media_id',$media_id);
+      $row = $this->db->get_one('module_reviews_ratings');
+      $average = round($row['average']);
+    }
+    else $average = null;
+    
+    $this->db->where('media_id',$media_id);
+    $this->db->update('media_metadata',[
+      'reviews_module_rating' => $average
+    ]);
   }
 }
