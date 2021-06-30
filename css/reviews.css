@@ -1,0 +1,15 @@
+.reviews-comment, .reviews-rating
+{
+  margin-top: 1rem;
+}
+
+.reviews-comment > *, .reviews-rating > *
+{
+  margin-bottom: 0.1rem;
+}
+
+.reviews-comment-datetime,
+.reviews-rating-datetime
+{
+  opacity: 0.5;
+}
