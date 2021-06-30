@@ -34,7 +34,7 @@ Delete a comment.
 
 ### comment_get
 
-Get all comments. Note this method is available to any logged in OpenBroadcaster user (or any user via APP keys).
+Get all comments. Note this method is available to any logged in OpenBroadcaster user (or any user via appkeys).
 
 | Parameter | Description |
 | --- | --- |
@@ -61,7 +61,7 @@ Delete a rating.
 
 ### rating_get
 
-Get all ratings. Note this method is available to any logged in OpenBroadcaster user (or any user via APP keys).
+Get all ratings. Note this method is available to any logged in OpenBroadcaster user (or any user via appkeys).
 
 | Parameter | Description |
 | --- | --- |
