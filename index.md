@@ -7,7 +7,6 @@ title: index
 {:toc}
 
 ## Reviews
-===========
 
 The Reviews module provides comment and ratings support for media items. Comments and ratings can be added (and deleted) via API requests only; the module is designed to integrate with another website. Adding a rating will also update a custom metadata field with the average rating in order to allow for searches and dynamic selections based on good (or poor) ratings.
 
@@ -22,7 +21,8 @@ See [https://docs.openbroadcaster.com/](https://docs.openbroadcaster.com/) for g
 
 The following methods are available for the controller "review".
 
-### comment_add
+`### comment_add`
+{:.no_toc}
 
 Add a comment to a media item. Multiple comments per user/email are allowed.
 
@@ -33,7 +33,8 @@ Add a comment to a media item. Multiple comments per user/email are allowed.
 | email | user's email |
 | comment | comment |
 
-### comment_delete
+`### comment_delete`
+{:.no_toc}
 
 Delete a comment.
 
@@ -41,7 +42,8 @@ Delete a comment.
 | --- | --- |
 | id | comment id |
 
-### comment_get
+`### comment_get`
+{:.no_toc}
 
 Get all comments. Note this method is available to any logged in OpenBroadcaster user (or any user via appkeys).
 
@@ -49,7 +51,8 @@ Get all comments. Note this method is available to any logged in OpenBroadcaster
 | --- | --- |
 | media_id | media id |
 
-### rating_add
+`### rating_add`
+{:.no_toc}
 
 Add a rating to a media item. If a rating already exists for this email address, it will be replaced.
 
@@ -60,7 +63,8 @@ Add a rating to a media item. If a rating already exists for this email address,
 | email | user's email |
 | rating | rating (0-100) |
 
-### rating_delete
+`### rating_delete`
+{:.no_toc}
 
 Delete a rating.
 
@@ -68,7 +72,8 @@ Delete a rating.
 | --- | --- |
 | id | rating id |
 
-### rating_get
+`### rating_get`
+{:.no_toc}
 
 Get all ratings. Note this method is available to any logged in OpenBroadcaster user (or any user via appkeys).
 
