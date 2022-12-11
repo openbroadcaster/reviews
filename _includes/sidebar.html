@@ -1,0 +1,38 @@
+{% if page.title == 'home' %}
+<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/openbroadcaster" data-widget-id="708479071877894144">Tweets by @openbroadcaster</a>
+<script>
+  ! function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0],
+      p = /^http:/.test(d.location) ? 'http' : 'https';
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id = id;
+      js.src = p + "://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }
+  }(document, "script", "twitter-wjs");
+</script>
+{% else %}
+
+<section>
+  <h2>Feedback</h2>
+<p>Find a bug? Want to request a feature? Submit your issue to <a href="https://github.com/openbroadcaster/observer/issues/new">OBServer</a> or <a href="https://github.com/openbroadcaster/obplayer/issues/new">OBPlayer</a></p>
+<p>Have some Gstreamer, PHP or Python coding skills? Help <a href="https://github.com/openbroadcaster/.github/blob/main/docs/CONTRIBUTING.md">Contribute</a> and <a href="https://github.com/sponsors/openbroadcaster">Sponsor</a> to make the OpenBroadcaster community even better</p> 
+<p>We really appreciate your feedback!</p>
+  
+<h3>OBServer Advisories</h3>
+<div id="srv_security" name="srv_security" class="buglist">
+</div>
+<h3>OBPlayer Advisories</h3>
+<div id="ply_security" name="ply_security" class="buglist">
+</div>
+</section>
+
+<h3>Open Server Bugs</h3>
+<div id="srv_bugs" name="srv_bugs" class="buglist">
+</div>
+<h3>Open Player Bugs</h3>
+<div id="ply_bugs" name="ply_bugs" class="buglist">
+</div>
+</section>
+{% endif %}
