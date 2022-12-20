@@ -2,11 +2,12 @@
 layout: default
 title: index
 ---
+# Reviews 
+{:.no_toc}
+
 
 * TOC
 {:toc}
-
-## Reviews
 
 The Reviews module provides comment and ratings support for media items. Comments and ratings can be added (and deleted) via API requests only; the module is designed to integrate with another website. Adding a rating will also update a custom metadata field with the average rating in order to allow for searches and dynamic selections based on good (or poor) ratings.
 
